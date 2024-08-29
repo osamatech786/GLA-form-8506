@@ -2299,15 +2299,16 @@ elif st.session_state.step == 11:
 #             else:
 #                 st.warning("Please fill in all fields before proceeding.")
 
-# elif st.session_state.step == 12:
-#     st.title("> 11: Thank you for completing the enrollment form!")
-
-#     st.write("**Thank you for completing the enrollment form!**")
-#     st.write("We will process your application and get in touch with you soon.")
-
 if st.session_state.submission_done:
-    st.write("Submission Finished!")
-    st.write("Kindly close the form.")
+    st.session_state.step = 12
+    st.experimental_rerun()
+    # st.write("Submission Finished!")
+    # st.write("Kindly close the form.")
+
+elif st.session_state.step == 12:
+    st.title("> 11: Thank you for completing the enrollment form!")
+    st.write("We will process your application and get in touch with you soon.")
+    st.text("Prevista! Where future begins.")
 
 # streamlit run app.py --server.port 8506
 # Dev : https://linkedin.com/in/osamatech786
