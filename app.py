@@ -211,27 +211,27 @@ def send_email_with_attachments(sender_email, sender_password, receiver_email, s
 
 # Function to add a checkbox with a file upload option
 def add_checkbox_with_upload(label, key_prefix):
-    global files
+    # global files
     checked = st.checkbox(label, key=f"{key_prefix}_checkbox")
     if checked:
         st.text(f'Please upload a copy of your {label}')
         uploaded_file = st.file_uploader(f"Upload {label}", type=['pdf', 'jpg', 'jpeg', 'png', 'docx'], key=f"{key_prefix}_uploader")
         if uploaded_file is not None:
-            files.append(uploaded_file)
+            st.session_state.files.append(uploaded_file)
         uploaded_file_1 = st.file_uploader(f"Optional - Upload Back Side of The Document", type=['pdf', 'jpg', 'jpeg', 'png', 'docx'], key=f"{key_prefix}_uploader_1")
         if uploaded_file_1 is not None:
-            files.append(uploaded_file_1)
+            st.session_state.files.append(uploaded_file_1)
         return 'X'
     else:
         return '-'
 
 # Function to handle file upload
 def handle_file_upload(label, key_prefix):
-    global files
+    # global files
     st.text(f'Please upload a copy of your {label}')
     uploaded_file = st.file_uploader(f"Upload {label}", type=['pdf', 'jpg', 'jpeg', 'png', 'docx'], key=key_prefix)
     if uploaded_file is not None:
-        files.append(uploaded_file)
+        st.session_state.files.append(uploaded_file)
         return 'X'
     else:
         return '-'
@@ -386,10 +386,10 @@ elif st.session_state.step == 3:
             'Any other mixed/ multiple ethnic background': '38'
         },
         'Asian/ Asian British': {
-            'Indian': '39',
-            'Pakistani': '40',
             'Bangladeshi': '41',
             'Chinese': '42',
+            'Indian': '39',
+            'Pakistani': '40',
             'Any other Asian background': '43'
         },
         'Black/ African/ Caribbean/ Black British': {
