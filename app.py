@@ -226,10 +226,10 @@ def add_checkbox_with_upload(label, key_prefix):
         return '-'
 
 # Function to handle file upload
-def handle_file_upload(label, key_prefix):
+def handle_file_upload(label):
     # global files
     st.text(f'Please upload a copy of your {label}')
-    uploaded_file = st.file_uploader(f"Upload {label}", type=['pdf', 'jpg', 'jpeg', 'png', 'docx'], key=key_prefix)
+    uploaded_file = st.file_uploader(f"Upload {label}", type=['pdf', 'jpg', 'jpeg', 'png', 'docx'])
     if uploaded_file is not None:
         st.session_state.files.append(uploaded_file)
         return 'X'
@@ -1416,13 +1416,13 @@ elif st.session_state.step == 7:
     st.session_state.selected_main_option = st.radio("Select an employment status or document:", main_options)
 
     if st.session_state.selected_main_option == main_options[0]:
-        st.session_state.latest_payslip = handle_file_upload('Latest Payslip (maximum 3 months prior to start date)', 'latest_payslip')
+        st.session_state.latest_payslip = handle_file_upload('Latest Payslip (maximum 3 months prior to start date)')
     elif st.session_state.selected_main_option == main_options[1]:
-        st.session_state.e04_employment_contract = handle_file_upload('Employment Contract', 'e04_employment_contract')
+        st.session_state.e04_employment_contract = handle_file_upload('Employment Contract')
     elif st.session_state.selected_main_option == main_options[2]:
-        st.session_state.confirmation_from_employer = handle_file_upload('Confirmation from the employer', 'confirmation_from_employer')
+        st.session_state.confirmation_from_employer = handle_file_upload('Confirmation from the employer')
     elif st.session_state.selected_main_option == main_options[3]:
-        st.session_state.redundancy_notice = handle_file_upload('Redundancy consultation or notice', 'redundancy_notice')
+        st.session_state.redundancy_notice = handle_file_upload('Redundancy consultation or notice')
     elif st.session_state.selected_main_option == main_options[4]:
         self_employed_options = [
             "HMRC 'SA302' self-assessment tax declaration, with acknowledgement of receipt (within last 12 months)",
@@ -1432,17 +1432,17 @@ elif st.session_state.step == 7:
         ]
         st.session_state.selected_self_employed_option = st.radio("Select self-employed evidence:", self_employed_options)
         if st.session_state.selected_self_employed_option == self_employed_options[0]:
-            st.session_state.sa302_declaration = handle_file_upload("HMRC 'SA302' self-assessment tax declaration", 'sa302_declaration')
+            st.session_state.sa302_declaration = handle_file_upload("HMRC 'SA302' self-assessment tax declaration")
         elif st.session_state.selected_self_employed_option == self_employed_options[1]:
-            st.session_state.ni_contributions = handle_file_upload('Records of Class 2 National Insurance Contributions', 'ni_contributions')
+            st.session_state.ni_contributions = handle_file_upload('Records of Class 2 National Insurance Contributions')
         elif st.session_state.selected_self_employed_option == self_employed_options[2]:
-            st.session_state.business_records = handle_file_upload('Business records', 'business_records')
+            st.session_state.business_records = handle_file_upload('Business records')
         elif st.session_state.selected_self_employed_option == self_employed_options[3]:
-            st.session_state.companies_house_records = handle_file_upload('Companies House records', 'companies_house_records')
+            st.session_state.companies_house_records = handle_file_upload('Companies House records')
     elif st.session_state.selected_main_option == main_options[5]:
-        st.session_state.other_evidence_employed = handle_file_upload("Other evidence as listed in the 'Start-Eligibility Evidence list'", 'other_evidence_employed')
+        st.session_state.other_evidence_employed = handle_file_upload("Other evidence as listed in the 'Start-Eligibility Evidence list'")
     elif st.session_state.selected_main_option == main_options[6]:
-        st.session_state.unemployed = handle_file_upload('Unemployed (complete the Employment section in ILP form)', 'unemployed')
+        st.session_state.unemployed = handle_file_upload('Unemployed (complete the Employment section in ILP form)')
 
     # Validation for the date of issue
     st.session_state.current_date = date.today()
