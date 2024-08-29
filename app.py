@@ -614,12 +614,12 @@ elif st.session_state.step == 5:
             st.write(f'**{label}**')
             
             # Create checkboxes
-            st.session_state.primary_checked = st.checkbox('Primary')
-            st.session_state.secondary_checked = st.checkbox('Secondary') if secondary else False
-            st.session_state.tertiary_checked = st.checkbox('Tertiary') if tertiary else False
+            primary_checked = st.checkbox('Primary')
+            secondary_checked = st.checkbox('Secondary') if secondary else False
+            tertiary_checked = st.checkbox('Tertiary') if tertiary else False
 
             # Set variables based on selections
-            if st.session_state.primary_checked:
+            if primary_checked:
                 if 'vision' in primary:
                     st.session_state.vision_impairment_primary = 'X'
                 elif 'hearing' in primary:
@@ -661,7 +661,7 @@ elif st.session_state.step == 5:
                 elif 'prefer_not' in primary:
                             st.session_state.prefer_not_to_say = 'X'
 
-            if st.session_state.secondary_checked:
+            if secondary_checked:
                 if 'vision' in secondary:
                     st.session_state.vision_impairment_secondary = 'X'
                 elif 'hearing' in secondary:
@@ -701,7 +701,7 @@ elif st.session_state.step == 5:
                 elif 'other_disability' in secondary:
                     st.session_state.other_disability_secondary = 'X'
 
-            if st.session_state.tertiary_checked:
+            if tertiary_checked:
                 if 'vision' in tertiary:
                     st.session_state.vision_impairment_tertiary = 'X'
                 elif 'hearing' in tertiary:
