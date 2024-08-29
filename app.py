@@ -1353,7 +1353,7 @@ elif st.session_state.step == 7:
     st.session_state.homeowner_letter = add_checkbox_with_upload('Letter/confirmation from homeowner (family/lodging)', 'homeowner_letter')
 
     st.session_state.e03_other_evidence_text=''
-    st.session_state.e03_other_evidence_text = st.text_input('Other Evidence: Please state type')
+    st.session_state.e03_other_evidence_text = st.text_input('Other Evidence: Please state type ')
 
     # Validation for the last 3 months
     st.session_state.e03_date_of_issue = st.date_input(
