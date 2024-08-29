@@ -184,7 +184,7 @@ def resize_image_to_fit_cell(image, max_width, max_height):
 def send_email_with_attachments(sender_email, sender_password, receiver_email, subject, body, files=None, local_file_path=None):
     msg = EmailMessage()
     msg['From'] = sender_email
-    msg['To'] = ", ".join(receiver_email)
+    msg['To'] = receiver_email
     msg['Subject'] = subject
     msg.set_content(body, subtype='html')
 
