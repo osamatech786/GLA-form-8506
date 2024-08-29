@@ -258,20 +258,19 @@ def progress_bar(duration_seconds):
         # Sleep for the calculated time
         time.sleep(sleep_time)
     # st.write("Progress complete!")
-# =========================================================================
-
+# ==============================================================================================================================================
 
 if 'files' not in st.session_state:
     st.session_state.files = []
-
-# mandatory fields validation
-# exclude_fields = {}     
-# mandatory_fields = []
 
 # Initialize session state
 if 'step' not in st.session_state:
     st.session_state.step = 1
     st.session_state.submission_done = False
+    
+# mandatory fields validation
+# exclude_fields = {}     
+# mandatory_fields = []
 
 
 # Define a function to calculate progress and percentage
@@ -2293,6 +2292,14 @@ elif st.session_state.step == 11:
         else:
             st.warning("Please draw your signature.")
         st.session_state.submission_done = True
+
+        if st.session_state.submission_done:
+            st.write("Submission Finished!")
+            st.session_state.clear()
+            st.write("Kindly close the form.")
+
+            
+            # st.experimental_rerun()  # Rerun the app to reflect the reset state
     
 #         if st.button("Next"):
 #             if (st.session_state.first_name):
@@ -2301,16 +2308,12 @@ elif st.session_state.step == 11:
 #             else:
 #                 st.warning("Please fill in all fields before proceeding.")
 
-if st.session_state.submission_done:
-    st.session_state.step = 12
-    st.experimental_rerun()
-    # st.write("Submission Finished!")
-    # st.write("Kindly close the form.")
 
-elif st.session_state.step == 12:
-    st.title("> 11: Thank you for completing the enrollment form!")
-    st.write("We will process your application and get in touch with you soon.")
-    st.text("Prevista! Where future begins.")
+
+# elif st.session_state.step == 12:
+#     st.title("> 11: Thank you for completing the enrollment form!")
+#     st.write("We will process your application and get in touch with you soon.")
+#     st.text("Prevista! Where future begins.")
 
 # streamlit run app.py --server.port 8506
 # Dev : https://linkedin.com/in/osamatech786
