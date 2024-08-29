@@ -2292,18 +2292,18 @@ elif st.session_state.step == 11:
             st.warning("Please draw your signature.")
         st.session_state.submission_done = True
     
-        if st.button("Next"):
-            if (st.session_state.first_name):
-                st.session_state.step = 12
-                st.experimental_rerun()
-            else:
-                st.warning("Please fill in all fields before proceeding.")
+#         if st.button("Next"):
+#             if (st.session_state.first_name):
+#                 st.session_state.step = 12
+#                 st.experimental_rerun()
+#             else:
+#                 st.warning("Please fill in all fields before proceeding.")
 
-elif st.session_state.step == 12:
-    st.title("> 11: Thank you for completing the enrollment form!")
+# elif st.session_state.step == 12:
+#     st.title("> 11: Thank you for completing the enrollment form!")
 
-    st.write("**Thank you for completing the enrollment form!**")
-    st.write("We will process your application and get in touch with you soon.")
+#     st.write("**Thank you for completing the enrollment form!**")
+#     st.write("We will process your application and get in touch with you soon.")
 
 if st.session_state.submission_done:
     st.write("Submission Finished!")
