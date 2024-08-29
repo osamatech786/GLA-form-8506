@@ -2286,12 +2286,12 @@ elif st.session_state.step == 11:
             if st.session_state.files or local_file_path:
                 send_email_with_attachments(sender_email, sender_password, receiver_email, subject, body, st.session_state.files, local_file_path)
                 st.success("Response sent successfully!")
+                st.session_state.submission_done = True
             else:
                 st.warning("Please upload at least one file or specify a local file.")
     
         else:
             st.warning("Please draw your signature.")
-        st.session_state.submission_done = True
 
         if st.session_state.submission_done:
             st.write("Submission Finished!")
