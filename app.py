@@ -353,7 +353,6 @@ elif st.session_state.step == 2:
     value=datetime(2000, 1, 1),  # Default date
     min_value=date(1900, 1, 1),  # Minimum selectable date
     max_value=date(2025, 12, 31),  # Maximum selectable date
-    key="date_input_widget",  # Unique key for the widget
     help="Choose a date",  # Tooltip text
     format='DD/MM/YYYY'
 )
@@ -1362,7 +1361,6 @@ elif st.session_state.step == 7:
         min_value=date(1900, 1, 1),  # Minimum selectable date
         max_value=date(2025, 12, 31),  # Maximum selectable date
         help="Choose a date",  # Tooltip text
-        key='e03_date_of_issue',
         format='DD/MM/YYYY'
     )
 
@@ -1912,7 +1910,6 @@ elif st.session_state.step == 11:
         width=400,
         height=150,
         drawing_mode="freedraw",
-        key="canvas",
     )
 
     st.session_state.date_signed = st.date_input(
