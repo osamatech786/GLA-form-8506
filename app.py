@@ -1449,7 +1449,7 @@ elif st.session_state.step == 7:
     st.session_state.three_months_ago = st.session_state.current_date - timedelta(days=90)
 
     st.session_state.e04_date_of_issue = st.date_input(
-        label="Date of Issue of evidence",
+        label="Date of Issue of evidence ",
         value=date.today(),  # Default date
         min_value=date(1900, 1, 1),  # Minimum selectable date
         max_value=date(2025, 12, 31),  # Maximum selectable date
