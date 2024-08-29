@@ -613,10 +613,11 @@ elif st.session_state.step == 5:
         for label, primary, secondary, tertiary in data:
             st.write(f'**{label}**')
             
-            # Create checkboxes
-            primary_checked = st.checkbox('Primary')
-            secondary_checked = st.checkbox('Secondary') if secondary else False
-            tertiary_checked = st.checkbox('Tertiary') if tertiary else False
+            # Create checkboxes with unique keys
+            primary_checked = st.checkbox('Primary', key=f'{primary}_primary_checkbox')
+            secondary_checked = st.checkbox('Secondary', key=f'{secondary}_secondary_checkbox') if secondary else False
+            tertiary_checked = st.checkbox('Tertiary', key=f'{tertiary}_tertiary_checkbox') if tertiary else False
+
 
             # Set variables based on selections
             if primary_checked:
