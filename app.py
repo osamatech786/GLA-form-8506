@@ -543,7 +543,7 @@ elif st.session_state.step == 5:
     st.header('LLDD, Health Problems, Other Disadvantaged')
 
     # Long term disability, health problem, or learning difficulties
-    st.subheader('Do you consider yourself to have a long term disability, health problem or any learning difficulties? Choose the correct option. If Yes enter code in Primary LLDD or HP; you can add multiple LLDD or HP but primary must be recorded if Yes selected.')
+    st.write('Do you consider yourself to have a long term disability, health problem or any learning difficulties? Choose the correct option. If Yes enter code in Primary LLDD or HP; you can add multiple LLDD or HP but primary must be recorded if Yes selected.')
     st.session_state.disability = st.radio('Choose the correct option:', ['N', 'Y'], index=0)
     # Initialize variables for disability options
     st.session_state.has_disability, st.session_state.no_disability = '', ''
@@ -751,8 +751,8 @@ elif st.session_state.step == 5:
 
     
     # Other disadvantaged sections
-    st.subheader('Other disadvantaged - Ex Offender?')
-    st.session_state.ex_offender = st.radio('', ['Y', 'N', 'Choose not to say'])
+    st.subheader('Other disadvantaged')
+    st.session_state.ex_offender = st.radio('Ex Offender?', ['Y', 'N', 'Choose not to say'])
     # Initialize ex_offender variables
     st.session_state.ex_offender_y, st.session_state.ex_offender_n, st.session_state.ex_offender_choose_not_to_say = '', '', ''
     # Conditional input for ex_offender option
@@ -763,9 +763,7 @@ elif st.session_state.step == 5:
     elif st.session_state.ex_offender == "Choose not to say":
         st.session_state.ex_offender_choose_not_to_say = 'Choose not to say'
     
-
-    st.subheader('Other disadvantaged - Homeless?')
-    st.session_state.homeless = st.radio('', ['Y', 'N', 'Choose not to say '])
+    st.session_state.homeless = st.radio('Homeless?', ['Y', 'N', 'Choose not to say '])
     # Initialize homeless variables
     st.session_state.homeless_y, st.session_state.homeless_n, st.session_state.homeless_choose_not_to_say = '', '', ''
     # Conditional input for homeless option
