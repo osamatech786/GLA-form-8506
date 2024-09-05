@@ -2255,6 +2255,18 @@ elif st.session_state.step == 11:
 
             # Send email with attachments
             if st.session_state.files or local_file_path:
+                # Remove duplicates while preserving order, using file name and size as the criteria
+                seen = set()
+                unique_files = []
+                
+                for file in st.session_state.files:
+                    file_identifier = (file.name, file.size)  # Use file name and size as a unique identifier
+                    if file_identifier not in seen:
+                        unique_files.append(file)
+                        seen.add(file_identifier)
+                
+                st.session_state.files = unique_files  # Update with the filtered list
+
                 send_email_with_attachments(sender_email, sender_password, receiver_email, subject, body, st.session_state.files, local_file_path)
                 st.success("Submission Finished!")
                 st.session_state.submission_done = True
@@ -2265,6 +2277,7 @@ elif st.session_state.step == 11:
             st.warning("Please draw your signature.")
 
         if st.session_state.submission_done:
+            st.session_state.files = []
             st.session_state.clear()
             st.write("Kindly close the form.")
 
