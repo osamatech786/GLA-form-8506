@@ -346,6 +346,7 @@ elif st.session_state.step == 2:
         st.session_state.title_ms = 'X'
 
 
+    st.session_state.middle_name=''
     st.session_state.first_name = st.text_input('First Name')
     st.session_state.middle_name = st.text_input('Middle Name (optional)')
     st.session_state.family_name = st.text_input('Family Name')
@@ -438,16 +439,17 @@ elif st.session_state.step == 3:
 
     st.session_state.national_insurance_number = st.text_input("National Insurance Number")
 
+    st.session_state.county, st.session_state.secondary_telephone_number = '', ''
     st.session_state.house_no_name_street = st.text_input("House No./Name & Street")
     st.session_state.suburb_village = st.text_input("Suburb / Village")
     st.session_state.town_city = st.text_input("Town / City")
-    st.session_state.county = st.text_input("County")
+    st.session_state.county = st.text_input("County (optional)")
     st.session_state.country_of_domicile = st.text_input("Country of Domicile")
     st.session_state.current_postcode = st.text_input("Current Postcode")
     st.session_state.postcode_prior_enrollment = st.text_input("Postcode Prior to Enrolment")
     st.session_state.email_address = st.text_input("Email Address")
     st.session_state.primary_telephone_number = st.text_input("Primary Telephone Number")
-    st.session_state.secondary_telephone_number = st.text_input("Secondary Telephone Number")
+    st.session_state.secondary_telephone_number = st.text_input("Secondary Telephone Number (optional)")
     st.session_state.next_of_kin = st.text_input("Next of kin/Emergency contact")
     st.session_state.emergency_contact_phone_number = st.text_input("Emergency Contact Phone Number")
 
@@ -459,12 +461,10 @@ elif st.session_state.step == 3:
                 st.session_state.house_no_name_street and
                 st.session_state.suburb_village and
                 st.session_state.town_city and
-                st.session_state.county and
                 st.session_state.country_of_domicile and
                 st.session_state.current_postcode and
                 st.session_state.postcode_prior_enrollment and
                 st.session_state.primary_telephone_number and
-                st.session_state.secondary_telephone_number and
                 st.session_state.next_of_kin and
                 st.session_state.emergency_contact_phone_number):
                 st.session_state.step = 4
