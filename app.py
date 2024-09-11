@@ -2253,7 +2253,9 @@ elif st.session_state.step == 11:
 
         if len(st.session_state.participant_signature.json_data['objects']) != 0:
             # Convert the drawing to a PIL image and save it
-            signature_path = 'signature_image.png'
+            safe_family_name = st.session_state.family_name.replace(" ", "_").lower()
+            signature_path = f'signature_{safe_family_name}.png'
+            # signature_path = 'signature_image.png'
             signature_image = PILImage.fromarray(
                 st.session_state.participant_signature.image_data.astype('uint8'), 'RGBA')
             signature_image.save(signature_path)
