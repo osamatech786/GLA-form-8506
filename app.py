@@ -367,7 +367,7 @@ elif st.session_state.step == 2:
     st.text(st.session_state.current_age_text)
 
     if st.button("Next"):
-        if (st.session_state.first_name and st.session_state.middle_name and st.session_state.family_name):
+        if (st.session_state.first_name and st.session_state.family_name):
             st.session_state.step = 3
             st.experimental_rerun()
         else:
@@ -427,7 +427,7 @@ elif st.session_state.step == 3:
 
     st.session_state.county, st.session_state.secondary_telephone_number = '', ''
     st.session_state.house_no_name_street = st.text_input("House No./Name & Street")
-    st.session_state.suburb_village = st.text_input("Suburb / Village")
+    st.session_state.suburb_village = st.text_input("Suburb / Village (optional)")
     st.session_state.town_city = st.text_input("Town / City")
     st.session_state.county = st.text_input("County (optional)")
     st.session_state.country_of_domicile = st.text_input("Country of Domicile")
@@ -445,7 +445,6 @@ elif st.session_state.step == 3:
         if (is_valid_email(st.session_state.email_address)):
             if (st.session_state.national_insurance_number and
                 st.session_state.house_no_name_street and
-                st.session_state.suburb_village and
                 st.session_state.town_city and
                 st.session_state.country_of_domicile and
                 st.session_state.current_postcode and
@@ -1238,32 +1237,32 @@ elif st.session_state.step == 7:
             if uploaded_file_4 is not None:
                 st.session_state.files.append(uploaded_file_4)
 
-        st.session_state.country_of_issue = st.text_input('Country of issue')
-        st.session_state.id_document_reference_number = st.text_input('ID Document Reference Number')
+    st.session_state.country_of_issue = st.text_input('Country of issue')
+    st.session_state.id_document_reference_number = st.text_input('ID Document Reference Number')
 
-        st.session_state.e01_date_of_issue = st.date_input(
-            label="Date of Issue",
-            value=datetime(2000, 1, 1),  # Default date
-            min_value=date(1900, 1, 1),  # Minimum selectable date
-            max_value=date(2025, 12, 31),  # Maximum selectable date
-            help="Choose a date",  # Tooltip text
-            format='DD/MM/YYYY'
-        )
-        st.session_state.e01_date_of_issue = st.session_state.e01_date_of_issue.strftime("%d-%m-%Y")
+    st.session_state.e01_date_of_issue = st.date_input(
+        label="Date of Issue",
+        value=datetime(2000, 1, 1),  # Default date
+        min_value=date(1900, 1, 1),  # Minimum selectable date
+        max_value=date(2025, 12, 31),  # Maximum selectable date
+        help="Choose a date",  # Tooltip text
+        format='DD/MM/YYYY'
+    )
+    st.session_state.e01_date_of_issue = st.session_state.e01_date_of_issue.strftime("%d-%m-%Y")
 
-        st.session_state.e01_date_of_expiry = st.date_input(
-            label="Date of Expiry",
-            value=datetime(2000, 1, 1),  # Default date
-            min_value=date(1900, 1, 1),  # Minimum selectable date
-            max_value=date(2050, 12, 31),  # Maximum selectable date
-            help="Choose a date",  # Tooltip text
-            format='DD/MM/YYYY'
-        )
-        st.session_state.e01_date_of_expiry = st.session_state.e01_date_of_expiry.strftime("%d-%m-%Y")
+    st.session_state.e01_date_of_expiry = st.date_input(
+        label="Date of Expiry",
+        value=datetime(2000, 1, 1),  # Default date
+        min_value=date(1900, 1, 1),  # Minimum selectable date
+        max_value=date(2050, 12, 31),  # Maximum selectable date
+        help="Choose a date",  # Tooltip text
+        format='DD/MM/YYYY'
+    )
+    st.session_state.e01_date_of_expiry = st.session_state.e01_date_of_expiry.strftime("%d-%m-%Y")
 
-        st.session_state.e01_additional_notes = st.text_area('Additional Notes',
-                                            'Use this space for additional notes where relevant (type of Visa, restrictions, expiry etc.)')
-        
+    st.write("Additional Notes")
+    st.session_state.e01_additional_notes = st.text_area('Use this space for additional notes where relevant (type of Visa, restrictions, expiry etc.)')
+
 
 
     st.header('E02: Proof of Age')
@@ -1459,7 +1458,7 @@ elif st.session_state.step == 7:
 
 
     if st.button("Next"):
-        if (st.session_state.first_name):
+        if (st.session_state.country_of_issue and st.session_state.id_document_reference_number and st.session_state.e01_additional_notes):
             st.session_state.step = 8
             st.experimental_rerun()
         else:
