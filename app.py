@@ -1944,6 +1944,8 @@ elif st.session_state.step == 11:
 
     # submit_button = st.button('Submit')
     if st.button("Submit"):
+        st.warning('Please wait! We are currently processing. . . .', icon="🚨")
+
         # A joke
         response = requests.get("https://official-joke-api.appspot.com/random_joke")
         joke_data = response.json()
@@ -2280,7 +2282,7 @@ elif st.session_state.step == 11:
                 print(f"Original image size: {resized_image.size}")
                 resized_image = resize_image_to_fit_cell(resized_image, 200, 50)
                 resized_image.save(resized_image_path)  # Save resized image to a file
-                print(f"Resized image saved to: {resized_image_path}")
+                print(f"Resized image saved to: {'resized_image_path'}")
 
                 # Call the function to replace placeholders
                 replace_placeholders(template_file, modified_file, st.session_state.placeholder_values, resized_image_path)
