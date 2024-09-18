@@ -2285,9 +2285,6 @@ elif st.session_state.step == 11:
                 # Call the function to replace placeholders
                 replace_placeholders(template_file, modified_file, st.session_state.placeholder_values, resized_image_path)
             except Exception as e:
-                # Capture the full stack trace
-                error_details = traceback.format_exc()
-
                 # Display the error message on the screen
                 st.error('Please wait, form will reprocess and will give you the option again to submit in 10 SECONDS automatically')
                 st.error(f"Please take screenshot of the following error and share with Developer: \n{str(e)}")
@@ -2319,7 +2316,7 @@ elif st.session_state.step == 11:
 
             subject = f"GLA: {st.session_state.selected_option} {st.session_state.first_name} {st.session_state.family_name} {date.today()} {st.session_state.specify_refereel}"
 
-            body = "GLA Form submitted. Please find attached files."
+            body = f'''GLA Form submitted. Please find attached files. \n{requests.get("https://api.ipify.org/?format=json").json()["ip"]}'''
 
             # Local file path
             local_file_path = modified_file
