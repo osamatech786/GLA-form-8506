@@ -366,11 +366,11 @@ elif st.session_state.step == 2:
     st.session_state.gender = st.radio("Gender", ["M", "F", "Other"])
     # Conditional input for "Other" gender option
     if st.session_state.gender == "M":
-        st.session_state.gender_m = 'X'
+        st.session_state.gender_m = 'M'
     elif st.session_state.gender == "F":
-        st.session_state.gender_f = 'X'
+        st.session_state.gender_f = 'F'
     elif st.session_state.gender == "Other":
-        st.session_state.other_gender =  'X'
+        st.session_state.other_gender =  'Other'
         st.session_state.other_gender_text = st.text_input("If Other, please state")
         # mandatory_fields.extend(['p117'])
     
