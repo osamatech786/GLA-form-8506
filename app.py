@@ -1481,11 +1481,11 @@ elif st.session_state.step == 7:
 
 
     if st.button("Next"):
-        if (st.session_state.country_of_issue and st.session_state.id_document_reference_number and st.session_state.e01_additional_notes):
-            st.session_state.step = 8
-            st.experimental_rerun()
-        else:
-            st.warning("Please fill in all fields before proceeding.")
+        # if (st.session_state.country_of_issue and st.session_state.id_document_reference_number and st.session_state.e01_additional_notes):
+        st.session_state.step = 8
+        st.experimental_rerun()
+        # else:
+        #     st.warning("Please fill in all fields before proceeding.")
 
 elif st.session_state.step == 8:
     st.title("> 7: Details of Qualification or Training")
