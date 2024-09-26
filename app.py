@@ -2296,9 +2296,6 @@ elif st.session_state.step == 11:
                 st.session_state.step = 11
                 st.experimental_rerun()
 
-                # Rerun the app to refresh the screen
-                st.experimental_rerun()
-
             # Email
 
             # Sender email credentials
@@ -2308,6 +2305,8 @@ elif st.session_state.step == 11:
             # sender_password = st.secrets["sender_password"]
             sender_email = get_secret("sender_email")
             sender_password = get_secret("sender_password")
+            # sender_email = 'dummy'
+            # sender_password = 'dummy'
 
             receiver_email = sender_email
 
@@ -2336,8 +2335,29 @@ elif st.session_state.step == 11:
                         seen.add(file_identifier)
                 
                 st.session_state.files = unique_files  # Update with the filtered list
+                try:
+                    send_email_with_attachments(sender_email, sender_password, receiver_email, subject, body, st.session_state.files, local_file_path)
+                except Exception as e:
+                    st.error(f"Failed to send email: {e}")
 
-                send_email_with_attachments(sender_email, sender_password, receiver_email, subject, body, st.session_state.files, local_file_path)
+                    # Provide file download button as a fallback
+                    st.warning("Email couldn't be sent, but you can download the file directly.")
+                    if local_file_path:
+                        with open(local_file_path, 'rb') as f:
+                            file_contents = f.read()
+                            st.download_button(
+                                label="Download Your File",
+                                data=file_contents,
+                                file_name=local_file_path.split('/')[-1],
+                                mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                            )
+                    st.warning('Please wait, form will reprocess and will give you the option again to submit in 10 SECONDS')
+                    time.sleep(12)
+
+                    st.session_state.submission_done = False
+                    st.session_state.step = 11
+                    st.experimental_rerun()
+                                            
                 st.success("Submission Finished!")
                 st.session_state.submission_done = True
             else:
@@ -2366,7 +2386,7 @@ elif st.session_state.step == 11:
 
             except Exception as e:
                 st.write("Unable to download the file. Please whatsapp learner name to +447405327072 for verificatino of submission.")
-                st.error('Please wait, form will reprocess and will give you the option again to submit in 10 SECONDS')
+                st.warning('Please wait, form will reprocess and will give you the option again to submit in 10 SECONDS')
                 time.sleep(12)
 
                 st.session_state.submission_done = False
