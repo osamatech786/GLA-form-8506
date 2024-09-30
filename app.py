@@ -1966,10 +1966,10 @@ elif st.session_state.step == 11:
 
     st.text("Signature:")
     st.session_state.participant_signature = st_canvas(
-        fill_color="rgba(255, 255, 255, 1)",  
+        fill_color="rgba(255, 255, 255, 1)",
         stroke_width=5,
         stroke_color="rgb(0, 0, 0)",  # Black stroke color
-        background_color="white",  # White background color
+        background_color="#ffffcc",  # background color
         width=400,
         height=150,
         drawing_mode="freedraw",
