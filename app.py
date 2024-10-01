@@ -1218,7 +1218,14 @@ elif st.session_state.step == 7:
                 'b. Hold pre-settled status granted under the European Union Settlement Scheme (EUSS)',
                 'c. Hold leave to remain with permission to work granted under the new Points Based Immigration System'
             ]
-            st.session_state.settled_status = st.radio("Select your status:", conditions)
+
+            # Initially set the radio button without any selection
+            st.session_state.settled_status = st.radio("Select your status:", options=conditions, index=None)
+
+            # Check if no selection is made
+            if not st.session_state.settled_status:
+                st.warning("Please select your status before proceeding.")
+                st.stop()
 
             if st.session_state.settled_status == conditions[0]:
                 st.session_state.hold_settled_status, st.session_state.hold_pre_settled_status, st.session_state.hold_leave_to_remain = 'X', '', ''
