@@ -1990,9 +1990,9 @@ elif st.session_state.step == 10:
     st.session_state.contact_surveys_val, st.session_state.contact_phone_val, st.session_state.contact_email_val, st.session_state.contact_post_val = '', '', '', ''
     # Update the variables based on user selections
     st.session_state.contact_surveys_val = 'Y' if st.session_state.contact_surveys == "Y" else 'N'
-    st.session_state.contact_phone_val = 'X' if st.session_state.contact_phone == "Y" else 'N'
-    st.session_state.contact_email_val = 'X' if st.session_state.contact_email == "Y" else 'N'
-    st.session_state.contact_post_val = 'X' if st.session_state.contact_post == "Y" else 'N'
+    st.session_state.contact_phone_val = 'Y' if st.session_state.contact_phone == "Y" else 'N'
+    st.session_state.contact_email_val = 'Y' if st.session_state.contact_email == "Y" else 'N'
+    st.session_state.contact_post_val = 'Y' if st.session_state.contact_post == "Y" else 'N'
 
     if st.button("Next"):
         st.session_state.step = 11
